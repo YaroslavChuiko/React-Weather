@@ -93,11 +93,12 @@ module.exports = {
             // e.g. for ./css/admin/main.css the publicPath will be ../../
             // while for ./css/main.css the publicPath will be ../
           },
-          'css-loader',
-          'postcss-loader',
+          {loader: 'css-loader'},
+          // {loader: 'css-loader', options: { modules: true }},
+          {loader: 'postcss-loader'},
           // according to the docs, sass-loader should be at the bottom, which
           // loads it first to avoid prefixes in your sourcemaps and other issues.
-          'sass-loader',
+          {loader: 'sass-loader'},
         ],
       },
       {
@@ -121,5 +122,6 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     hot: true,
+    historyApiFallback: true, // for routes on single page app
   },
 };
