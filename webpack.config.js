@@ -94,7 +94,6 @@ module.exports = {
             // while for ./css/main.css the publicPath will be ../
           },
           {loader: 'css-loader'},
-          // {loader: 'css-loader', options: { modules: true }},
           {loader: 'postcss-loader'},
           // according to the docs, sass-loader should be at the bottom, which
           // loads it first to avoid prefixes in your sourcemaps and other issues.
