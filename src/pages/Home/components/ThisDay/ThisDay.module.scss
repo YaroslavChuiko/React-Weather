@@ -1,0 +1,49 @@
+@use '../../../../styles/variables' as *;
+
+.this_day {
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  background: $lite-bg;
+  // box-shadow: $box-shadow;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: $border-radius;
+}
+
+.top_block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  margin-top: 10px;
+
+  .weather_icon {
+    width: 119px;
+    height: 119px;
+  }
+
+  .this_tempr {
+    color: $primary-color;
+    font-size: 96px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .this_day__name {
+    font-size: 40px;
+    color: $primary-font-color;
+  }
+}
+
+.bottom_block {
+  & :not(:last-child) {
+    margin-bottom: 10px;
+  }
+  
+  .this_time,
+  .this_city {
+    color: $secondary-font-color;
+    font-size: 25px;
+  }
+}
