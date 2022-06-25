@@ -9,24 +9,36 @@ type Props = {};
 
 const Header = (props: Props) => {
   const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
+    { value: 'city-1', label: 'Киев' },
+    { value: 'city-2', label: 'Харьков' },
+    { value: 'city-3', label: 'Львов' },
   ];
+
+  const colorStyles = {
+    control: (styles: any) => ({
+      ...styles,
+      backgroundColor: 'rgba(71, 147, 255, 0.2)',
+      width: '194px',
+      height: '37px',
+      border: 'none',
+      borderRadius: '10px',
+      zIndex: 100,
+    }),
+  };
 
   return (
     <header className={s.header}>
       <div className={s.wrapper}>
         <div className={s.logo}>
-          <LogoIcon className={s.logo} />
+          <LogoIcon />
         </div>
         <div className={s.title}>React weather</div>
       </div>
       <div className={s.wrapper}>
-        <div className="change-theme">
+        <div className={s.change_theme}>
           <ChangeThemeIcon />
         </div>
-        <Select options={options} />
+        <Select defaultValue={options[0]} styles={colorStyles} options={options} />
       </div>
     </header>
   );

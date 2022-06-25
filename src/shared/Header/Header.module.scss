@@ -1,4 +1,7 @@
+@use '../../styles/variables' as *;
+
 .header {
+  margin: 20px 0 30px 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -10,8 +13,11 @@
   align-items: center;
 }
 
-.logo {
+.logo, .change_theme {
   margin-right: 20px;
+}
+
+.logo {
   width: 65px;
   height: 65px;
 }
@@ -20,4 +26,5 @@
   text-transform: uppercase;
   font-weight: bold;
   font-size: 25px;
+  color: $primary-color;
 }
