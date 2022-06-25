@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from 'react-select'
+import Select from 'react-select';
 
 import s from './Header.module.scss';
 import LogoIcon from '../../assets/icons/logo.svg';
@@ -11,8 +11,8 @@ const Header = (props: Props) => {
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-  ]
+    { value: 'vanilla', label: 'Vanilla' },
+  ];
 
   return (
     <header className={s.header}>
