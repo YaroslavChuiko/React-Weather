@@ -3,11 +3,17 @@
 .this_day {
   padding: 20px;
   max-width: 400px;
+  min-height: 300px;
   width: 100%;
   background: $lite-bg;
-  // box-shadow: $box-shadow;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: $box-shadow;
   border-radius: $border-radius;
+}
+
+.this_block__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .top_block {
@@ -16,7 +22,6 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
-  margin-top: 10px;
 
   .weather_icon {
     width: 119px;
@@ -38,9 +43,9 @@
 
 .bottom_block {
   & :not(:last-child) {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
-  
+
   .this_time,
   .this_city {
     color: $secondary-font-color;

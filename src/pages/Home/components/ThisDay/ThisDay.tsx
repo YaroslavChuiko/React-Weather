@@ -8,6 +8,7 @@ type Props = {};
 const ThisDay = (props: Props) => {
   return (
     <div className={s.this_day}>
+      <div className={s.this_day__inner}>
       <div className={s.top_block}>
         <div className={s.top_block__wrapper}>
           <div className={s.this_tempr}>20°</div>
@@ -22,6 +23,7 @@ const ThisDay = (props: Props) => {
         <div className={s.this_city}>
           Город: <span>Киев</span>
         </div>
+      </div>
       </div>
     </div>
   );
