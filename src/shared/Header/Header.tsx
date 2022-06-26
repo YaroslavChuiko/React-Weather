@@ -7,6 +7,8 @@ import ChangeThemeIcon from '../../assets/icons/change-theme.svg';
 
 type Props = {};
 
+//TODO: add styles to react select
+
 const Header = (props: Props) => {
   const options = [
     { value: 'city-1', label: 'Киев' },
