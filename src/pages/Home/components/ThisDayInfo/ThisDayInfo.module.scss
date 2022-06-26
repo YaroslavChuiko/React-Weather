@@ -1,3 +1,17 @@
-.home {
-  font-size: 30px;
+@use '../../../../styles/variables' as *;
+
+.this_day_info {
+  padding: 0 40px;
+  max-width: 750px;
+  min-height: 300px;
+  width: 100%;
+  background-color: $lite-bg;
+  background-image: url('../../../../assets/images/cloud-bg.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
