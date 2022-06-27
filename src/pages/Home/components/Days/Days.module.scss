@@ -1,0 +1,113 @@
+@use '../../../../styles/variables' as *;
+
+.days {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+  width: 100%;
+  background-color: $lite-bg;
+  box-shadow: $box-shadow;
+  border-radius: 0 0 $border-radius $border-radius;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  padding: 10px;
+  background-color: rgba(71, 147, 255, 0.2);
+  border-radius: 10px;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  .day_name {
+    margin-bottom: 7px;
+    font-size: 18px;
+    color: $primary-font-color;
+  }
+
+  .day_info {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: $secondary-font-color;
+  }
+
+  .icon {
+    margin-bottom: 12px;
+
+    img {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  .temp_day {
+    font-size: 18px;
+    color: $primary-font-color;
+  }
+
+  .temp_night {
+    font-size: 13px;
+    color: $secondary-font-color;
+    margin-bottom: 6px;
+  }
+
+  .info {
+    font-size: 13px;
+    color: $secondary-font-color;
+  }
+
+  &:hover {
+    box-shadow: 0px 3px 20px rgba(147, 144, 144, 0.28);
+  }
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  .tabs__wrapper {
+    display: flex;
+
+    & :not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+
+  & :not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+.cancel,
+.tab {
+  box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+  border: none;
+  border-radius: 5px;
+  padding: 9px 20px;
+  background-color: $lite-bg;
+  color: $primary-font-color;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: rgba(71, 147, 255, 0.2);
+    box-shadow: 2px 5px 25px -3px rgba(61, 61, 61, 0.20);
+  }
+
+  &:active {
+    background-color: $primary-color;
+    color: #fff;
+  }
+}
+
+.tab {
+  &.active {
+    background-color: $primary-color;
+    color: #fff;
+  }
+}
