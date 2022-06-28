@@ -1,5 +1,5 @@
-import React from 'react'
-import s from './DailyDetailsGrid.module.scss'
+import React from 'react';
+import s from './DailyDetailsGrid.module.scss';
 import DailyDetailsGridRow from './DailyDetailsGridIRow';
 
 export type Row = {
@@ -13,14 +13,14 @@ type Props = {
   rows: Row[];
 };
 
-const DailyDetailsGrid = ( props : Props) => {
+const DailyDetailsGrid = (props: Props) => {
   return (
     <div className={s.daily_details}>
       {props.rows.map((row: Row, index) => (
-        <DailyDetailsGridRow key={index} row={row}/>
+        <DailyDetailsGridRow key={index} row={row} />
       ))}
     </div>
   );
 };
 
-export default DailyDetailsGrid
+export default DailyDetailsGrid;

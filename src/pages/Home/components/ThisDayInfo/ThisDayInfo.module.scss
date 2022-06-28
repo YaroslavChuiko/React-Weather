@@ -1,7 +1,7 @@
 @use '../../../../styles/variables' as *;
 
 .this_day_info {
-  padding: 0 40px;
+  padding: 20px 40px;
   max-width: 750px;
   min-height: 300px;
   width: 100%;
@@ -13,5 +13,4 @@
   border-radius: $border-radius;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
 }
