@@ -14,7 +14,6 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  // background-color: $light-bg;
   background-color: #fff;
   box-shadow: $box-shadow;
 }
@@ -29,5 +28,5 @@
 }
 
 .value {
-  color: $primary-font-color;
+  color: var(--text-color-default);
 }
