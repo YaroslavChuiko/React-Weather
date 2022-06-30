@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 
 import s from './Header.module.scss';
@@ -16,10 +16,26 @@ const Header = (props: Props) => {
     { value: 'city-3', label: 'Львов' },
   ];
 
+  const [theme, setTheme] = useState('light');
+
+  const changeTheme = () => {
+    setTheme(prevValue => (prevValue === 'light' ? 'dark' : 'light'));
+  };
+
+  useEffect(() => {
+    const root = document.querySelector(':root') as HTMLElement;
+
+    const components = ['body-background', 'components-background', 'card-background', 'card-shadow', 'text-color'];
+
+    components.forEach(component => {
+      root.style.setProperty(`--${component}-default`, `var(--${component}-${theme})`)
+    })
+  }, [theme]);
+
   const colorStyles = {
     control: (styles: any) => ({
       ...styles,
-      backgroundColor: 0 ? '#4F4F4F' : 'rgba(71, 147, 255, 0.2)',
+      backgroundColor: theme === 'dark' ? '#4F4F4F' : 'rgba(71, 147, 255, 0.2)',
       width: '194px',
       height: '37px',
       border: 'none',
@@ -28,7 +44,7 @@ const Header = (props: Props) => {
     }),
     singleValue: (styles: any) => ({
       ...styles,
-      color: 0 ? '#fff' : '#000',
+      color: theme === 'dark' ? '#fff' : '#000',
     }),
   };
 
@@ -41,7 +57,7 @@ const Header = (props: Props) => {
         <div className={s.title}>React weather</div>
       </div>
       <div className={s.wrapper}>
-        <div className={s.change_theme}>
+        <div className={s.change_theme} onClick={changeTheme}>
           <ChangeThemeIcon />
         </div>
         <Select defaultValue={options[0]} styles={colorStyles} options={options} />
