@@ -1,4 +1,4 @@
-import { Theme } from "../context/ThemeContext";
+import { Theme } from '../context/ThemeContext';
 
 export const changeCssRootVariables = (theme: Theme) => {
   const root = document.querySelector(':root') as HTMLElement;
@@ -8,4 +8,4 @@ export const changeCssRootVariables = (theme: Theme) => {
   components.forEach(component => {
     root.style.setProperty(`--${component}-default`, `var(--${component}-${theme})`);
   });
-}
+};
