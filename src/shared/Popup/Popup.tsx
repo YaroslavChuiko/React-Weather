@@ -7,7 +7,7 @@ import s from './Popup.module.scss';
 import CloseIcon from '../../assets/icons/close.svg';
 import temp from '../../assets/icons/temp.svg?url';
 import pressure from '../../assets/icons/pressure.svg?url';
-import precipitation from '../../assets/icons/precipitation.svg?url';
+import humidity from '../../assets/icons/humidity.svg?url';
 import wind from '../../assets/icons/wind.svg?url';
 import smallRainSun from '../../assets/icons/small_rain_sun.svg?url';
 
@@ -27,7 +27,7 @@ export const Popup = (props: Props) => {
       value: '765 мм ртутного столба - нормальное',
     },
     {
-      icon_url: precipitation,
+      icon_url: humidity,
       name: 'Осадки',
       value: 'Без осадков',
     },
