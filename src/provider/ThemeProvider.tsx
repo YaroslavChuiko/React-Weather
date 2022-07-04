@@ -9,11 +9,11 @@ type Props = {
 
 export const ThemeProvider = ({ children, ...props }: Props) => {
   const [theme, setTheme] = useState<Theme>(storage.getItem('theme') || Theme.LIGHT);
-  
+
   changeCssRootVariables(theme);
-  
+
   const changeTheme = (theme: Theme) => {
-    storage.setItem('theme', theme)
+    storage.setItem('theme', theme);
     setTheme(theme);
     changeCssRootVariables(theme);
   };
