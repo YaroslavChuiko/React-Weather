@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from './Card';
 
 import s from './Days.module.scss';
@@ -12,6 +12,11 @@ import Tabs from './Tabs';
 
 type Props = {};
 
+export type Tab = {
+  id: string;
+  value: string;
+};
+
 export type Day = {
   day_name: string;
   day_info: string;
@@ -22,6 +27,23 @@ export type Day = {
 };
 
 const Days = (props: Props) => {
+  const tabs: Tab[] = [
+    {
+      id: '7d',
+      value: 'На неделю',
+    },
+    {
+      id: '10d',
+      value: 'На 10 дней',
+    },
+    {
+      id: '30d',
+      value: 'На 30 дней',
+    },
+  ];
+
+  const [activeTab, setActiveTab] = useState(tabs[0].id);
+
   const days: Day[] = [
     {
       day_name: 'Сегодня',
@@ -83,8 +105,8 @@ const Days = (props: Props) => {
 
   return (
     <>
-      <Tabs />
-      
+      <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
+
       <div className={s.days}>
         {days.map((day: Day, index) => (
           <Card key={index} day={day} />

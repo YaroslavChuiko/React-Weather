@@ -1,37 +1,43 @@
 import React from 'react';
+import { Tab } from './Days';
 
 import s from './Days.module.scss';
 
-type Props = {};
-
-type Tab = {
-  value: string;
+type Props = {
+  tabs: Tab[];
+  activeTab: string;
+  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const Tabs = (props: Props) => {
-  const tabs: Tab[] = [
-    {
-      value: 'На неделю',
-    },
-    {
-      value: 'На 10 дней',
-    },
-    {
-      value: 'На 30 дней',
-    },
-  ];
+const Tabs = ({ tabs, activeTab, setActiveTab }: Props) => {
+
+  const handleTabClick = (e: any) => {
+    e.preventDefault();
+    setActiveTab(e.target.id);
+  };
+
+  const handleCancelClick = (e: any) => {
+    e.preventDefault();
+    setActiveTab(tabs[0].id);
+  };
 
   return (
     <div className={s.tabs}>
       <div className={s.tabs__wrapper}>
-        {tabs.map((tab: Tab) => (
-          <button type="button" key={tab.value} className={s.tab}>
-            {tab.value}
-          </button>
-        ))}
+        {tabs.map((tab: Tab) => {
+          const className = tab.id === activeTab ? s.tab + ' ' + s.active : s.tab;
+
+          return (
+            <button id={tab.id} type="button" key={tab.id} className={className} onClick={handleTabClick}>
+              {tab.value}
+            </button>
+          );
+        })}
       </div>
 
-      <button className={s.cancel}>Отменить</button>
+      <button className={s.cancel} onClick={handleCancelClick}>
+        Отменить
+      </button>
     </div>
   );
 };
