@@ -17,7 +17,7 @@ const Tabs = (props: Props) => {
       value: 'На 10 дней',
     },
     {
-      value: 'На месяц',
+      value: 'На 30 дней',
     },
   ];
 

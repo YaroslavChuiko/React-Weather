@@ -9,10 +9,10 @@ import ThisDayInfo from './components/ThisDayInfo/ThisDayInfo';
 import s from './Home.module.scss';
 
 type Props = {
-  city: string
+  city: string;
 };
 
-const Home = ({city}: Props) => {
+const Home = ({ city }: Props) => {
   const dispatch = useCustomDispatch();
 
   const { weather } = useCustomSelector(selectCurrentWeatherData);

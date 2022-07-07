@@ -13,6 +13,6 @@ export const store = configureStore({
     }),
 });
 
-export type RootState = ReturnType<typeof rootReducer>; //? typeof
+export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = typeof store;
 export type AppDispatch = AppStore['dispatch'];

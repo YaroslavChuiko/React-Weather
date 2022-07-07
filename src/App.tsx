@@ -23,7 +23,7 @@ const App = () => {
   return (
     <div className="container">
       <Header city={city} selectCityOptions={selectCityOptions} setCity={setCity} />
-      <Popup />
+      {0 ? <Popup /> : null}
       <Routes>
         <Route path="/" element={<Home city={city} />} />
         <Route path="/month-statistics" element={<MonthStatistics />} />
