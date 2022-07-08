@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AxiosResponse } from 'axios';
-import { Weather } from '../types';
+import { OnecallWeather } from '../types';
 
-type CurrentWeather = {
-  weather: Weather;
+type OnecallWeatherState = {
+  weather: OnecallWeather;
   isLoading: boolean;
   response: Response;
 };
@@ -13,27 +13,50 @@ type Response = {
   message: string;
 };
 
-const initialState: CurrentWeather = {
+const initialState: OnecallWeatherState = {
   weather: {
-    weather: [
-      {
-        main: '',
-        icon: '',
-      },
-    ],
-    main: {
+    timezone: '',
+    current: {
+      dt: 0, //sec
       temp: 0,
       feels_like: 0,
-      pressure: 0,
-      humidity: 0,
+      pressure: 0, //hPa
+      humidity: 0, //%
+      wind_speed: 0,
+      wind_deg: 0,
+      wind_gust: 0, //??
+      weather: [
+        {
+          main: '', //??Group of weather parameters (Rain, Snow, Extreme etc.)
+          icon: '01d',
+        },
+      ],
     },
-    wind: {
-      speed: 0,
-      deg: 0,
-      gust: 0,
+    daily: {
+      dt: 0, //sec
+      temp: {
+        day: 0,
+        min: 0,
+        max: 0,
+      },
+      feels_like: {
+        day: 0,
+        night: 0,
+      },
+      pressure: 0, //hPa
+      humidity: 0, //%
+      wind_speed: 0,
+      wind_deg: 0,
+      wind_gust: 0,
+      weather: [
+        {
+          main: '',
+          description: '',
+          icon: '01d',
+        },
+      ],
+      pop: 0,
     },
-    dt: 0,
-    name: '',
   },
   isLoading: false,
   response: {
@@ -42,14 +65,14 @@ const initialState: CurrentWeather = {
   },
 };
 
-export const currentWeatherSlice = createSlice({
+export const onecallWeatherSlice = createSlice({
   name: 'current_weather',
   initialState,
   reducers: {
-    fetchCurrentWeather(state) {
+    fetchOnecallWeather(state) {
       state.isLoading = true;
     },
-    fetchCurrentWeatherSuccess(state, action: PayloadAction<AxiosResponse<Weather>>) {
+    fetchOnecallWeatherSuccess(state, action: PayloadAction<AxiosResponse<OnecallWeather>>) {
       state.isLoading = false;
       state.weather = action.payload.data;
       state.response = {
@@ -57,7 +80,7 @@ export const currentWeatherSlice = createSlice({
         message: action.payload.statusText,
       };
     },
-    fetchCurrentWeatherError(state, action: PayloadAction<AxiosResponse<Weather>>) {
+    fetchOnecallWeatherError(state, action: PayloadAction<AxiosResponse<OnecallWeather>>) {
       state.isLoading = false;
       state.response = {
         status: action.payload.status,
@@ -67,4 +90,4 @@ export const currentWeatherSlice = createSlice({
   },
 });
 
-export default currentWeatherSlice.reducer;
+export default onecallWeatherSlice.reducer;

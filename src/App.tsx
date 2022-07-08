@@ -11,11 +11,13 @@ export type Option = {
   label: string;
 };
 
+//TODO: rework cities to context, add enum for cities
+
 const App = () => {
   const selectCityOptions: Option[] = [
-    { value: 'kyiv', label: 'Киев' },
-    { value: 'kharkiv', label: 'Харьков' },
-    { value: 'lviv', label: 'Львов' },
+    { value: 'lat=50.4547&lon=30.5238', label: 'Киев' },
+    { value: 'lat=49.9808&lon=36.2527', label: 'Харьков' },
+    { value: 'lat=49.8383&lon=24.0232', label: 'Львов' },
   ];
 
   const [city, setCity] = useState(storage.getItem('city') || selectCityOptions[0].value);

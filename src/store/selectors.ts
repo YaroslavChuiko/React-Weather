@@ -1,3 +1,3 @@
 import { RootState } from './store';
 
-export const selectCurrentWeatherData = (state: RootState) => state.currentWeatherSliceReducer;
+export const selectOnecallWeatherData = (state: RootState) => state.onecallWeatherSliceReducer;

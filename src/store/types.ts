@@ -1,21 +1,48 @@
-export type Weather = {
+export type OnecallWeather = {
+  timezone: string;
+  current: OnecallWeatherCurrent;
+  daily: OnecallWeatherDaily;
+};
+
+export type OnecallWeatherCurrent = {
+  dt: number; //sec
+  temp: number;
+  feels_like: number;
+  pressure: number; //hPa
+  humidity: number; //%
+  wind_speed: number;
+  wind_deg: number;
+  wind_gust: number; //??
   weather: [
     {
-      main: string; //Group of weather parameters (Rain, Snow, Extreme etc.)
+      main: string; //??Group of weather parameters (Rain, Snow, Extreme etc.)
       icon: string;
     }
   ];
-  main: {
-    temp: number;
-    feels_like: number;
-    pressure: number; //hPa
-    humidity: number; //%
-  };
-  wind: {
-    speed: number;
-    deg: number;
-    gust: number;
-  };
+};
+
+export type OnecallWeatherDaily = {
   dt: number; //sec
-  name: string;
+  temp: {
+    day: number;
+    min: number;
+    max: number;
+  };
+  feels_like: {
+    day: number;
+    night: number;
+  };
+  pressure: number; //hPa
+  humidity: number; //%
+  wind_speed: number;
+  wind_deg: number;
+  wind_gust: number;
+  weather: [
+    {
+      main: string;
+      description: string;
+      icon: string;
+    }
+  ];
+  pop: number;
 };

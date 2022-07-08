@@ -2,10 +2,10 @@ import React from 'react';
 
 import s from './ThisDay.module.scss';
 import SunIcon from '../../../../assets/icons/sun.svg';
-import { Weather } from '../../../../store/types';
+import { OnecallWeatherCurrent } from '../../../../store/types';
 
 type Props = {
-  weather: Weather;
+  weather: OnecallWeatherCurrent;
 };
 
 function getFormattedTime(date: number) {
@@ -23,18 +23,18 @@ const ThisDay = ({ weather }: Props) => {
       <div className={s.this_day__inner}>
         <div className={s.top_block}>
           <div className={s.top_block__wrapper}>
-            <div className={s.this_tempr}>{Math.round(weather.main.temp)}°</div>
+            <div className={s.this_tempr}>{Math.round(weather.temp)}°</div>
             <div className={s.this_day__name}>Сегодня</div>
           </div>
-          <SunIcon className={s.weather_icon} />
-          {/* <img className={s.weather_icon} src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt="weather icon" /> */}
+          {/* <SunIcon className={s.weather_icon} /> */}
+          <img className={s.weather_icon} src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt="weather icon" />
         </div>
         <div className={s.bottom_block}>
           <div className={s.this_time}>
             Время: <span>{getFormattedTime(weather.dt)}</span>
           </div>
           <div className={s.this_city}>
-            Город: <span>{weather.name}</span>
+            Город: <span>{weather.weather[0].main}</span>
           </div>
         </div>
       </div>

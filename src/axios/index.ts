@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(config => {
-  config.url += '&appid=' + process.env.REACT_APP_API_KEY + '&units=metric' + '&lang=ua';
+  config.url += '&appid=' + process.env.REACT_APP_API_KEY + '&exclude=minutely,hourly,alerts' + '&units=metric' + '&lang=ua';
   return config;
 });
 

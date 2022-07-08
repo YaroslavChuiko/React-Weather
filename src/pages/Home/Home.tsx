@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useCustomDispatch, useCustomSelector } from '../../hooks/store';
-import { selectCurrentWeatherData } from '../../store/selectors';
+import { selectOnecallWeatherData } from '../../store/selectors';
 import { fetchCurrentWeather } from '../../store/thunks/fetchCurrentWeather';
 import Days from './components/Days/Days';
 import ThisDay from './components/ThisDay/ThisDay';
@@ -15,7 +15,7 @@ type Props = {
 const Home = ({ city }: Props) => {
   const dispatch = useCustomDispatch();
 
-  const { weather } = useCustomSelector(selectCurrentWeatherData);
+  const { weather } = useCustomSelector(selectOnecallWeatherData);
 
   useEffect(() => {
     dispatch(fetchCurrentWeather(city));
@@ -24,8 +24,8 @@ const Home = ({ city }: Props) => {
   return (
     <div className={s.home}>
       <div className={s.wrapper}>
-        <ThisDay weather={weather} />
-        <ThisDayInfo weather={weather} />
+        <ThisDay weather={weather.current} />
+        <ThisDayInfo weather={weather.current} />
       </div>
       <Days />
     </div>

@@ -7,10 +7,10 @@ import temp from '../../../../assets/icons/temp.svg?url';
 import pressure from '../../../../assets/icons/pressure.svg?url';
 import humidity from '../../../../assets/icons/humidity.svg?url';
 import wind from '../../../../assets/icons/wind.svg?url';
-import { Weather } from '../../../../store/types';
+import { OnecallWeatherCurrent } from '../../../../store/types';
 
 type Props = {
-  weather: Weather;
+  weather: OnecallWeatherCurrent;
 };
 
 const ThisDayInfo = ({ weather }: Props) => {
@@ -18,22 +18,22 @@ const ThisDayInfo = ({ weather }: Props) => {
     {
       icon_url: temp,
       name: 'Температура',
-      value: `${Math.round(weather.main.temp)}° - ощущается как ${Math.round(weather.main.feels_like)}°`,
+      value: `${Math.round(weather.temp)}° - ощущается как ${Math.round(weather.feels_like)}°`,
     },
     {
       icon_url: pressure,
       name: 'Давление',
-      value: `${Math.round(weather.main.pressure / 1.333)} мм ртутного столба - нормальное`,
+      value: `${Math.round(weather.pressure / 1.333)} мм ртутного столба - нормальное`,
     },
     {
       icon_url: humidity,
       name: 'Влажность',
-      value: `${weather.main.humidity}%`,
+      value: `${weather.humidity}%`,
     },
     {
       icon_url: wind,
       name: 'Ветер',
-      value: `${weather.wind.speed} м/с ${weather.wind.deg} юго-запад, Порывы ${weather.wind.gust} м/с`,
+      value: `${weather.wind_speed} м/с ${weather.wind_deg} юго-запад, Порывы ${weather.wind_gust} м/с`,
     },
   ];
 
