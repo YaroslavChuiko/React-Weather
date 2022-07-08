@@ -36,7 +36,7 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: Props) => {
       </div>
 
       <button className={s.cancel} onClick={handleCancelClick}>
-        Отменить
+        Cancel
       </button>
     </div>
   );

@@ -9,8 +9,11 @@ import mainlyCloudy from '../../../../assets/icons/mainly_cloudy.svg?url';
 import smallRainSun from '../../../../assets/icons/small_rain_sun.svg?url';
 import smallRain from '../../../../assets/icons/small_rain.svg?url';
 import Tabs from './Tabs';
+import { OnecallWeatherDaily } from '../../../../store/types';
 
-type Props = {};
+type Props = {
+  days: OnecallWeatherDaily[];
+};
 
 export type Tab = {
   id: string;
@@ -26,91 +29,40 @@ export type Day = {
   info: string;
 };
 
-const Days = (props: Props) => {
+//TODO: add swith or enum for tabs and their value
+
+const Days = ({ days }: Props) => {
   const tabs: Tab[] = [
     {
-      id: '7d',
-      value: 'На неделю',
+      id: '2',
+      value: 'For 2 days',
     },
     {
-      id: '10d',
-      value: 'На 10 дней',
+      id: '4',
+      value: 'For 4 days',
     },
     {
-      id: '30d',
-      value: 'На 30 дней',
+      id: '7',
+      value: 'For 7 days',
     },
   ];
 
   const [activeTab, setActiveTab] = useState(tabs[0].id);
-
-  const days: Day[] = [
-    {
-      day_name: 'Сегодня',
-      day_info: '28 авг',
-      icon_url: sun,
-      temp_day: '+18°',
-      temp_night: '+15°',
-      info: 'Облачно',
-    },
-    {
-      day_name: 'Завтра',
-      day_info: '29 авг',
-      icon_url: smallRainSun,
-      temp_day: '+18°',
-      temp_night: '+15°',
-      info: 'Небольшой дождь и солнце',
-    },
-    {
-      day_name: 'Ср',
-      day_info: '30 авг',
-      icon_url: smallRain,
-      temp_day: '+18°',
-      temp_night: '+15°',
-      info: 'Небольшой дождь',
-    },
-    {
-      day_name: 'Чт',
-      day_info: '28 авг',
-      icon_url: mainlyCloudy,
-      temp_day: '+18°',
-      temp_night: '+15°',
-      info: 'Облачно',
-    },
-    {
-      day_name: 'Пт',
-      day_info: '28 авг',
-      icon_url: rain,
-      temp_day: '+18°',
-      temp_night: '+15°',
-      info: 'Облачно',
-    },
-    {
-      day_name: 'Сб',
-      day_info: '28 авг',
-      icon_url: sun,
-      temp_day: '+18°',
-      temp_night: '+15°',
-      info: 'Облачно',
-    },
-    {
-      day_name: 'Вс',
-      day_info: '28 авг',
-      icon_url: sun,
-      temp_day: '+18°',
-      temp_night: '+15°',
-      info: 'Облачно',
-    },
-  ];
 
   return (
     <>
       <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <div className={s.days}>
-        {days.map((day: Day, index) => (
-          <Card key={index} day={day} />
-        ))}
+        {days.slice(0, +activeTab).map((day: OnecallWeatherDaily, index) => {
+          if (index === 0) {
+            return <Card key={index} day={day} dayName={'Today'} />;
+          }
+          if (index === 1) {
+            return <Card key={index} day={day} dayName={'Tomorrow'} />;
+          }
+          return <Card key={index} day={day} dayName={''} />;
+        })}
       </div>
     </>
   );

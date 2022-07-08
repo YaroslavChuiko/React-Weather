@@ -32,31 +32,33 @@ const initialState: OnecallWeatherState = {
         },
       ],
     },
-    daily: {
-      dt: 0, //sec
-      temp: {
-        day: 0,
-        min: 0,
-        max: 0,
-      },
-      feels_like: {
-        day: 0,
-        night: 0,
-      },
-      pressure: 0, //hPa
-      humidity: 0, //%
-      wind_speed: 0,
-      wind_deg: 0,
-      wind_gust: 0,
-      weather: [
-        {
-          main: '',
-          description: '',
-          icon: '01d',
+    daily: [
+      {
+        dt: 0, //sec
+        temp: {
+          day: 0,
+          min: 0,
+          max: 0,
         },
-      ],
-      pop: 0,
-    },
+        feels_like: {
+          day: 0,
+          night: 0,
+        },
+        pressure: 0, //hPa
+        humidity: 0, //%
+        wind_speed: 0,
+        wind_deg: 0,
+        wind_gust: 0,
+        weather: [
+          {
+            main: '',
+            description: '',
+            icon: '01d',
+          },
+        ],
+        pop: 0,
+      },
+    ],
   },
   isLoading: false,
   response: {

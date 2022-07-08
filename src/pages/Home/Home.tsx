@@ -27,7 +27,7 @@ const Home = ({ city }: Props) => {
         <ThisDay weather={weather.current} />
         <ThisDayInfo weather={weather.current} />
       </div>
-      <Days />
+      <Days days={weather.daily}/>
     </div>
   );
 };
