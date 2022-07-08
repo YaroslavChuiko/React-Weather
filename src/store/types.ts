@@ -1,7 +1,7 @@
 export type OnecallWeather = {
   timezone: string;
   current: OnecallWeatherCurrent;
-  daily: OnecallWeatherDaily;
+  daily: OnecallWeatherDaily[];
 };
 
 export type OnecallWeatherCurrent = {
