@@ -21,41 +21,48 @@ export type Tab = {
   value: string;
 };
 
-export type Day = {
-  day_name: string;
-  day_info: string;
-  icon_url: typeof rain;
-  temp_day: string;
-  temp_night: string;
-  info: string;
-};
-
-//TODO: add swith or enum for tabs and their value
-
 const Days = ({ days }: Props) => {
   const tabs: Tab[] = [
     {
-      id: '2',
+      id: '0',
       value: 'For 2 days',
     },
     {
-      id: '4',
+      id: '1',
       value: 'For 4 days',
     },
     {
-      id: '7',
+      id: '2',
       value: 'For 7 days',
     },
   ];
 
   const [activeTab, setActiveTab] = useState(sStorage.getItem('activeTab') || tabs[0].id);
 
+  const determineNumberOfCards = (activeTabId: number) => {
+    switch (activeTabId) {
+      case 0:
+        return 2;
+  
+      case 1:
+        return 4;
+  
+      case 2:
+        return 7;
+  
+      default:
+        return 2;
+    }
+  }
+
+  const cards = days.slice(0, determineNumberOfCards(+activeTab));
+
   return (
     <>
       <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <div className={s.days}>
-        {days.slice(0, +activeTab).map((day: OnecallWeatherDaily, index) => {
+        {cards.map((day: OnecallWeatherDaily, index) => {
           if (index === 0) {
             return <Card key={index} day={day} dayName={'Today'} />;
           }
