@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { storage } from './model/Storage';
+import { lStorage } from './model/Storage';
 import Home from './pages/Home/Home';
 import MonthStatistics from './pages/MonthStatistics/MonthStatistics';
 import Header from './shared/Header/Header';
@@ -20,7 +20,7 @@ const App = () => {
     { value: 'lat=49.8383&lon=24.0232', label: 'Львов' },
   ];
 
-  const [city, setCity] = useState(storage.getItem('city') || selectCityOptions[0].value);
+  const [city, setCity] = useState(lStorage.getItem('city') || selectCityOptions[0].value);
 
   return (
     <div className="container">

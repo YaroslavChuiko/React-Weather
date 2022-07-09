@@ -10,6 +10,7 @@ import smallRainSun from '../../../../assets/icons/small_rain_sun.svg?url';
 import smallRain from '../../../../assets/icons/small_rain.svg?url';
 import Tabs from './Tabs';
 import { OnecallWeatherDaily } from '../../../../store/types';
+import { sStorage } from '../../../../model/Storage';
 
 type Props = {
   days: OnecallWeatherDaily[];
@@ -47,7 +48,7 @@ const Days = ({ days }: Props) => {
     },
   ];
 
-  const [activeTab, setActiveTab] = useState(tabs[0].id);
+  const [activeTab, setActiveTab] = useState(sStorage.getItem('activeTab') || tabs[0].id);
 
   return (
     <>

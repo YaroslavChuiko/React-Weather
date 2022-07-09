@@ -1,4 +1,5 @@
 import React from 'react';
+import { sStorage } from '../../../../model/Storage';
 import { Tab } from './Days';
 
 import s from './Days.module.scss';
@@ -13,11 +14,13 @@ const Tabs = ({ tabs, activeTab, setActiveTab }: Props) => {
 
   const handleTabClick = (e: any) => {
     e.preventDefault();
+    sStorage.setItem('activeTab', e.target.id);
     setActiveTab(e.target.id);
   };
 
   const handleCancelClick = (e: any) => {
     e.preventDefault();
+    sStorage.setItem('activeTab', e.target.id);
     setActiveTab(tabs[0].id);
   };
 

@@ -5,7 +5,7 @@ import { Theme } from '../../context/ThemeContext';
 import s from './Header.module.scss';
 import LogoIcon from '../../assets/icons/logo.svg';
 import ChangeThemeIcon from '../../assets/icons/change-theme.svg';
-import { storage } from '../../model/Storage';
+import { lStorage } from '../../model/Storage';
 import { Option } from '../../App';
 
 type Props = {
@@ -25,7 +25,7 @@ const Header = ({ city, selectCityOptions, setCity }: Props) => {
 
   const handleChangeCity = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCity(e.target.value);
-    storage.setItem('city', e.target.value);
+    lStorage.setItem('city', e.target.value);
   };
 
   // const colorStyles = {
