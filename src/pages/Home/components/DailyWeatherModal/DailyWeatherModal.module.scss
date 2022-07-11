@@ -1,0 +1,40 @@
+@use '../../../../styles/variables' as *;
+
+.day {
+  margin-right: 40px;
+
+  .day__temp {
+    margin-bottom: 8px;
+    font-weight: 500;
+    line-height: 1;
+    font-size: 60px;
+    color: $primary-color;
+  }
+
+  .day__name {
+    line-height: 1;
+    font-size: 25px;
+    color: var(--text-color-default);
+    margin-bottom: 12px;
+
+  }
+
+  .icon {
+    margin-bottom: 12px;
+
+    img {
+      width: 53px;
+      height: 53px;
+    }
+  }
+  .time {
+    margin-bottom: 5px;
+  }
+
+  .time,
+  .city {
+    font-weight: 400;
+    font-size: 15px;
+    color: $secondary-font-color;
+  }
+}
