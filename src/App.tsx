@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { lStorage } from './model/Storage';
 import Home from './pages/Home/Home';
 import MonthStatistics from './pages/MonthStatistics/MonthStatistics';
 import Header from './shared/Header/Header';
-import { Popup } from './shared/Popup/Popup';
+import { DailyWeatherModal } from './pages/Home/components/DailyWeatherModal/DailyWeatherModal';
 
 export type Option = {
   value: string;
@@ -12,6 +12,7 @@ export type Option = {
 };
 
 //TODO: rework cities to context, add enum for cities
+//TODO: get data form location.state here and send as props or inside <Popup />
 
 const App = () => {
   const selectCityOptions: Option[] = [
@@ -25,9 +26,11 @@ const App = () => {
   return (
     <div className="container">
       <Header city={city} selectCityOptions={selectCityOptions} setCity={setCity} />
-      {0 ? <Popup /> : null}
+
       <Routes>
-        <Route path="/" element={<Home city={city} />} />
+        <Route path="/" element={<Home city={city} />}>
+          <Route path="popup/:id" element={<DailyWeatherModal />} />
+        </Route>
         <Route path="/month-statistics" element={<MonthStatistics />} />
       </Routes>
     </div>

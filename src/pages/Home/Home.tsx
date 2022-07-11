@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import { useCustomDispatch, useCustomSelector } from '../../hooks/store';
 import { selectOnecallWeatherData } from '../../store/selectors';
 import { fetchCurrentWeather } from '../../store/thunks/fetchCurrentWeather';
@@ -22,13 +23,16 @@ const Home = ({ city }: Props) => {
   }, [city]);
 
   return (
-    <div className={s.home}>
-      <div className={s.wrapper}>
-        <ThisDay weather={weather.current} />
-        <ThisDayInfo weather={weather.current} />
+    <>
+      <div className={s.home}>
+        <div className={s.wrapper}>
+          <ThisDay weather={weather.current} />
+          <ThisDayInfo weather={weather.current} />
+        </div>
+        <Days days={weather.daily} />
       </div>
-      <Days days={weather.daily}/>
-    </div>
+      <Outlet />
+    </>
   );
 };
 
