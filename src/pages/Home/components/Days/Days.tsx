@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Card from './Card';
 
 import s from './Days.module.scss';
@@ -43,17 +43,17 @@ const Days = ({ days }: Props) => {
     switch (activeTabId) {
       case 0:
         return 2;
-  
+
       case 1:
         return 4;
-  
+
       case 2:
         return 7;
-  
+
       default:
         return 2;
     }
-  }
+  };
 
   const cards = days.slice(0, determineNumberOfCards(+activeTab));
 
@@ -62,7 +62,7 @@ const Days = ({ days }: Props) => {
       <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <div className={s.days}>
-        {cards.map((day: OnecallWeatherDaily, index) => {
+        {cards.map((day: OnecallWeatherDaily, index) => { //TODO: fix dayName props, add new func that return weekDayName of Today | Tomorrow
           if (index === 0) {
             return <Card key={index} day={day} dayName={'Today'} />;
           }
