@@ -10,8 +10,7 @@ import ThisDayInfo from './components/ThisDayInfo/ThisDayInfo';
 
 import s from './Home.module.scss';
 
-type Props = {
-};
+type Props = {};
 
 const Home = (props: Props) => {
   const city = useCity();
@@ -20,7 +19,7 @@ const Home = (props: Props) => {
   const { weather } = useCustomSelector(selectOnecallWeatherData);
 
   useEffect(() => {
-    dispatch(fetchCurrentWeather(city.city.coords));
+    dispatch(fetchCurrentWeather(city.currCity.coords));
   }, [city]);
 
   return (

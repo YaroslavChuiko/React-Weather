@@ -11,17 +11,7 @@ export type Option = {
   label: string;
 };
 
-//TODO: rework cities to context, add enum for cities
-//TODO: get data form location.state here and send as props or inside <Popup />
-
 const App = () => {
-  // const selectCityOptions: Option[] = [
-  //   { value: 'lat=50.4547&lon=30.5238', label: 'Киев' },
-  //   { value: 'lat=49.9808&lon=36.2527', label: 'Харьков' },
-  //   { value: 'lat=49.8383&lon=24.0232', label: 'Львов' },
-  // ];
-
-  // const [city, setCity] = useState(lStorage.getItem('city') || selectCityOptions[0].value);
 
   return (
     <div className="container">

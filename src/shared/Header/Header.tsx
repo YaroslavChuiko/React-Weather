@@ -6,7 +6,7 @@ import s from './Header.module.scss';
 import LogoIcon from '../../assets/icons/logo.svg';
 import ChangeThemeIcon from '../../assets/icons/change-theme.svg';
 import { useCity } from '../../hooks/useCity';
-import { Cities, City } from '../../context/CityContext';
+import { City } from '../../context/CityContext';
 import { capitalizeFirstLetter } from '../utils';
 
 type Props = {};
@@ -23,9 +23,7 @@ const Header = (props: Props) => {
   const city = useCity();
 
   const handleChangeCity = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    // setCity(e.target.value);
-    // lStorage.setItem('city', e.target.value);
-    city.changeCity(Cities.get(e.target.value));
+    city.changeCurrCity(city.cities.get(e.target.value));
   };
 
   // const colorStyles = {
@@ -57,8 +55,8 @@ const Header = (props: Props) => {
           <ChangeThemeIcon />
         </div>
 
-        <select value={city.city.name} onChange={handleChangeCity}>
-          {Array.from(Cities.entries()).map((item: [string, City]) => {
+        <select value={city.currCity.name} onChange={handleChangeCity}>
+          {Array.from(city.cities.entries()).map((item: [string, City]) => {
             return (
               <option key={item[0]} value={item[0]}>
                 {capitalizeFirstLetter(item[1].name)}

@@ -74,7 +74,7 @@ export const DailyWeatherModal = (props: Props) => {
           Time: <span>{time}</span>
         </div>
         <div className={s.city}>
-          City: <span>{capitalizeFirstLetter(currentCity.city.name)}</span>
+          City: <span>{capitalizeFirstLetter(currentCity.currCity.name)}</span>
         </div>
       </div>
       <DailyDetailsGrid rows={items} />
