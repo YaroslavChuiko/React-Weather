@@ -5,27 +5,27 @@ import { Theme } from '../../context/ThemeContext';
 import s from './Header.module.scss';
 import LogoIcon from '../../assets/icons/logo.svg';
 import ChangeThemeIcon from '../../assets/icons/change-theme.svg';
-import { lStorage } from '../../model/Storage';
-import { Option } from '../../App';
+import { useCity } from '../../hooks/useCity';
+import { Cities, City } from '../../context/CityContext';
+import { capitalizeFirstLetter } from '../utils';
 
-type Props = {
-  city: string;
-  selectCityOptions: Option[];
-  setCity: React.Dispatch<React.SetStateAction<string>>;
-};
+type Props = {};
 
 //TODO: add styles to react select
 
-const Header = ({ city, selectCityOptions, setCity }: Props) => {
+const Header = (props: Props) => {
   const theme = useTheme();
 
   const changeTheme = () => {
     theme.changeTheme(theme.theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT);
   };
 
+  const city = useCity();
+
   const handleChangeCity = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCity(e.target.value);
-    lStorage.setItem('city', e.target.value);
+    // setCity(e.target.value);
+    // lStorage.setItem('city', e.target.value);
+    city.changeCity(Cities.get(e.target.value));
   };
 
   // const colorStyles = {
@@ -57,11 +57,11 @@ const Header = ({ city, selectCityOptions, setCity }: Props) => {
           <ChangeThemeIcon />
         </div>
 
-        <select value={city} onChange={handleChangeCity}>
-          {selectCityOptions.map((item: Option) => {
+        <select value={city.city.name} onChange={handleChangeCity}>
+          {Array.from(Cities.entries()).map((item: [string, City]) => {
             return (
-              <option key={item.value} value={item.value}>
-                {item.label}
+              <option key={item[0]} value={item[0]}>
+                {capitalizeFirstLetter(item[1].name)}
               </option>
             );
           })}

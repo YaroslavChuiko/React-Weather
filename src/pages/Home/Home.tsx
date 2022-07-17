@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useCustomDispatch, useCustomSelector } from '../../hooks/store';
+import { useCity } from '../../hooks/useCity';
 import { selectOnecallWeatherData } from '../../store/selectors';
 import { fetchCurrentWeather } from '../../store/thunks/fetchCurrentWeather';
 import Days from './components/Days/Days';
@@ -10,16 +11,16 @@ import ThisDayInfo from './components/ThisDayInfo/ThisDayInfo';
 import s from './Home.module.scss';
 
 type Props = {
-  city: string;
 };
 
-const Home = ({ city }: Props) => {
-  const dispatch = useCustomDispatch();
+const Home = (props: Props) => {
+  const city = useCity();
 
+  const dispatch = useCustomDispatch();
   const { weather } = useCustomSelector(selectOnecallWeatherData);
 
   useEffect(() => {
-    dispatch(fetchCurrentWeather(city));
+    dispatch(fetchCurrentWeather(city.city.coords));
   }, [city]);
 
   return (

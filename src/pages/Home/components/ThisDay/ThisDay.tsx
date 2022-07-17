@@ -3,13 +3,16 @@ import React from 'react';
 import s from './ThisDay.module.scss';
 import SunIcon from '../../../../assets/icons/sun.svg';
 import { OnecallWeatherCurrent } from '../../../../store/types';
-import { getFormattedTime, toTemperatureFormat } from '../../../../shared/utils';
+import { capitalizeFirstLetter, getFormattedTime, toTemperatureFormat } from '../../../../shared/utils';
+import { useCity } from '../../../../hooks/useCity';
 
 type Props = {
   weather: OnecallWeatherCurrent;
 };
 
 const ThisDay = ({ weather }: Props) => {
+
+  const currentCity = useCity();
 
   const temp = toTemperatureFormat(weather.temp);
   const time = getFormattedTime(weather.dt * 1000);
@@ -30,7 +33,7 @@ const ThisDay = ({ weather }: Props) => {
             Time: <span>{time}</span>
           </div>
           <div className={s.this_city}>
-            City: <span>{weather.weather[0].main}</span>
+            City: <span>{capitalizeFirstLetter(currentCity.city.name)}</span>
           </div>
         </div>
       </div>

@@ -15,20 +15,20 @@ export type Option = {
 //TODO: get data form location.state here and send as props or inside <Popup />
 
 const App = () => {
-  const selectCityOptions: Option[] = [
-    { value: 'lat=50.4547&lon=30.5238', label: 'Киев' },
-    { value: 'lat=49.9808&lon=36.2527', label: 'Харьков' },
-    { value: 'lat=49.8383&lon=24.0232', label: 'Львов' },
-  ];
+  // const selectCityOptions: Option[] = [
+  //   { value: 'lat=50.4547&lon=30.5238', label: 'Киев' },
+  //   { value: 'lat=49.9808&lon=36.2527', label: 'Харьков' },
+  //   { value: 'lat=49.8383&lon=24.0232', label: 'Львов' },
+  // ];
 
-  const [city, setCity] = useState(lStorage.getItem('city') || selectCityOptions[0].value);
+  // const [city, setCity] = useState(lStorage.getItem('city') || selectCityOptions[0].value);
 
   return (
     <div className="container">
-      <Header city={city} selectCityOptions={selectCityOptions} setCity={setCity} />
+      <Header />
 
       <Routes>
-        <Route path="/" element={<Home city={city} />}>
+        <Route path="/" element={<Home />}>
           <Route path="popup/:id" element={<DailyWeatherModal />} />
         </Route>
         <Route path="/month-statistics" element={<MonthStatistics />} />

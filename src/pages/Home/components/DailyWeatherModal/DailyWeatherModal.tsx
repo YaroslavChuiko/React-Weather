@@ -12,7 +12,8 @@ import humidity from '../../../../assets/icons/humidity.svg?url';
 import wind from '../../../../assets/icons/wind.svg?url';
 
 import smallRainSun from '../../../../assets/icons/small_rain_sun.svg?url';
-import { getFormattedTime, toTemperatureFormat } from '../../../../shared/utils';
+import { capitalizeFirstLetter, getFormattedTime, toTemperatureFormat } from '../../../../shared/utils';
+import { useCity } from '../../../../hooks/useCity';
 
 type Props = {};
 
@@ -28,6 +29,8 @@ export const DailyWeatherModal = (props: Props) => {
   const onDismiss = () => {
     navigate(-1);
   };
+
+  const currentCity = useCity();
 
   const items: Row[] = [
     {
@@ -71,7 +74,7 @@ export const DailyWeatherModal = (props: Props) => {
           Time: <span>{time}</span>
         </div>
         <div className={s.city}>
-          City: <span>Киев</span>
+          City: <span>{capitalizeFirstLetter(currentCity.city.name)}</span>
         </div>
       </div>
       <DailyDetailsGrid rows={items} />
