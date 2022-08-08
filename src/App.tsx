@@ -19,7 +19,7 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Home />}>
-          <Route path="popup/:id" element={<DailyWeatherModal />} />
+          <Route path="dialog/:id" element={<DailyWeatherModal />} />
         </Route>
         <Route path="/month-statistics" element={<MonthStatistics />} />
       </Routes>

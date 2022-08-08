@@ -25,7 +25,7 @@ const Card = ({ day, dayName }: Props) => {
     <div
       className={s.card}
       onClick={() => {
-        navigate('popup/' + day.dt, { state: { weatherForDay: day } });
+        navigate('dialog/' + day.dt, { state: { weatherForDay: day } });
       }}
     >
       <div className={s.day_name}>{weekDay}</div>
