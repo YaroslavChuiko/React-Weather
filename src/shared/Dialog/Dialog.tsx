@@ -1,8 +1,9 @@
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 
 import s from './Dialog.module.scss';
 
 import CloseIcon from '../../assets/icons/close.svg';
+import Fade from '../Animations/Fade';
 
 type Props = {
   onDismiss: () => void;
@@ -11,12 +12,20 @@ type Props = {
 
 //https://stackblitz.com/github/remix-run/react-router/tree/main/examples/modal?file=src%2FApp.tsx
 //https://codesandbox.io/s/16kt1?file=/src/App.js
-export const Dialog = ({ children, onDismiss }: Props) => {
+export const Dialog = ({ children, onDismiss: onDismissProp }: Props) => {
+  const [showDialog, setShowDialog] = useState(false);
   const dialog = useRef(null);
+  const timeout = 200;
 
   useEffect(() => {
+    setShowDialog(true);
     dialog.current.focus();
   }, []);
+
+  const onDismiss = () => {
+    setShowDialog(false);
+    setTimeout(onDismissProp, timeout);
+  };
 
   const handleWrapperClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     event.preventDefault();
@@ -34,13 +43,15 @@ export const Dialog = ({ children, onDismiss }: Props) => {
 
   return (
     <div className={s.wrapper} ref={dialog} onClick={handleWrapperClick} tabIndex={0} onKeyDown={handleEscPress}>
-      <div className={s.dialog}>
-        <button className={s.close_btn} onClick={onDismiss}>
-          <CloseIcon className={s.close_icon} />
-        </button>
+      <Fade inProp={showDialog} timeout={timeout}>
+        <div className={s.dialog}>
+          <button className={s.close_btn} onClick={onDismiss}>
+            <CloseIcon className={s.close_icon} />
+          </button>
 
-        {children}
-      </div>
+          {children}
+        </div>
+      </Fade>
     </div>
   );
 };
