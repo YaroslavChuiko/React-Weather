@@ -17,16 +17,14 @@
   z-index: 10000;
   overflow-y: auto;
 
-  // visibility: visible;
-  // opacity: 1;
   // opacity: 0;
   // visibility: hidden;
   transition: opacity 0.2s linear, visibility 0.2s linear;
 
-  &.show {
-    visibility: visible;
-    opacity: 1;
-  }
+  // &.show {
+  //   visibility: visible;
+  //   opacity: 1;
+  // }
 }
 
 .dialog {
