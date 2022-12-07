@@ -1,6 +1,19 @@
-# react-weather
+<head>
+    <div align="center">
+        <h1 align="center">React-Weather</h2>
+    </div>
+</head>
 
-[Demo of React Weather](https://yaroslavchuiko.github.io/Ucode-Calculator/)
+<div align="center">
+  <img alt="typescript" src="https://img.shields.io/badge/-TypeScript-3178C6.svg?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img alt="webpack" src="https://img.shields.io/badge/-Webpack-8DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black" />
+  <img alt="react" src="https://img.shields.io/badge/-React-61DAFB.svg?style=for-the-badge&logo=react&logoColor=black" />
+  <img alt="reactrouter" src="https://img.shields.io/badge/-React%20Router-CA4245.svg?style=for-the-badge&logo=react-router&logoColor=white" />
+  <img alt="sass" src="https://img.shields.io/badge/-Sass-CC6699.svg?style=for-the-badge&logo=sass&logoColor=white" />
+</div>
+
+<br/>
+<br/>
 
 ### Summary
 
@@ -33,3 +46,6 @@ Open .env.local file in root directory. In .env.local file write
 - React Transition Group
 - OpenWeatherMap API
 - TypeScript
+
+### Preview
+![preview](https://user-images.githubusercontent.com/32570823/206239043-afbfcd99-bc91-423c-ac1e-39e58662efb2.png)
